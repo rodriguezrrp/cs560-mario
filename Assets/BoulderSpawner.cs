@@ -4,36 +4,27 @@ using UnityEngine;
 
 public class BoulderSpawner : MonoBehaviour
 {
-
+    // Configurable public attributes
     public GameObject boulderPrefab;
-    public float spawnDelay;  // I recommend default of 10 seconds probably.
+    public float spawnDelay;  // I recommend default of 10 seconds.
     public Vector3 spawnVelocity;
 
-    // Start is called before the first frame update
     void Start()
     {
         if(spawnDelay <= 0)
         {
-            spawnDelay = 10.0f;  // I recommend a default of 10 seconds probably.
+            // In case of invalid value, default to 10 seconds
+            spawnDelay = 10.0f;
         }
-        //StartCoroutine(SpawnerCoroutine());
         InvokeRepeating("SpawnBoulder", 1.0f, spawnDelay);
     }
 
-    IEnumerator SpawnerCoroutine()
-    {
-//        while ()
-        {
-            // spawn new boulder
-            SpawnBoulder();
-            // wait
-            yield return new WaitForSeconds(spawnDelay);
-        }
-    }
-
+    // Spawns the configured prefab (Intended to be a Boulder)
     void SpawnBoulder()
     {
-        GameObject spawnedBoulder = Instantiate(boulderPrefab, GetComponent<Transform>().position, Quaternion.identity);
+        GameObject spawnedBoulder = Instantiate(boulderPrefab,
+            GetComponent<Transform>().position, Quaternion.identity
+            );
         Rigidbody rb = spawnedBoulder.GetComponent<Rigidbody>();
         rb.velocity = spawnVelocity;
     }

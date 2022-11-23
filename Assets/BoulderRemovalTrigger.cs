@@ -4,18 +4,8 @@ using UnityEngine;
 
 public class BoulderRemovalTrigger : MonoBehaviour
 {
-  /*  // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }*/
-
+    // Whenever a Boulder comes into the trigger zone, destroy the Boulder
     void OnTriggerEnter(Collider coll)
     {
         // When boulder collides, remove it
