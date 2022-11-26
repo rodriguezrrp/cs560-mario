@@ -9,6 +9,7 @@ TagManager:
   - Enemy Body
   - Enemy Head
   - Coin
+  - WeakArea
   layers:
   - Default
   - TransparentFX
