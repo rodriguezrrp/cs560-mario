@@ -10,6 +10,7 @@ TagManager:
   - Enemy Head
   - Coin
   - WeakArea
+  - Star
   layers:
   - Default
   - TransparentFX

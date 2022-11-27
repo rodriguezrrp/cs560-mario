@@ -15,9 +15,12 @@ public class EnemyBobomb : MonoBehaviour, IEnemyComponent
     private GameObject homePoint;
     private float homeRadius = 18f;
 
+    GameObject starPrefab;
+
     // Start is called before the first frame update
     void Start()
     {
+        starPrefab = GameObject.Find("Star");
         HomePointComponent comp = GetComponent<HomePointComponent>();
         homePoint = comp.homePoint;
         homeRadius = comp.homeRadius;
@@ -34,10 +37,17 @@ public class EnemyBobomb : MonoBehaviour, IEnemyComponent
         if(invulnerableTimer > 0f)
         { // deal with invulnerability laying on ground
             // lean back
-            this.transform.eulerAngles = new Vector3(20f, this.transform.eulerAngles.y, 0f);
+            this.transform.eulerAngles = new Vector3(-40f, this.transform.eulerAngles.y, 0f);
             // dec invuln timer
             invulnerableTimer -= Time.deltaTime;
-            Debug.Log("invulnerableTimer: " + invulnerableTimer);
+            Debug.Log("health: " + health + "  invulnerableTimer: " + invulnerableTimer);
+            if (invulnerableTimer <= 0f)
+            {
+                if(health == 0)
+                    Defeat();
+                // lean horizontal again
+                this.transform.eulerAngles = new Vector3(0f, this.transform.eulerAngles.y, 0f);
+            }
         }
         else
         { // not invulnerable down on ground
@@ -85,8 +95,21 @@ public class EnemyBobomb : MonoBehaviour, IEnemyComponent
     {
         if(invulnerableTimer <= 0f)
         {
-            this.health--;
-            this.invulnerableTimer = 1f;
+            if (this.health >= 1)
+            {
+                this.health--;
+                this.invulnerableTimer = 1f;
+            }
+            else
+                Defeat();
         }
+    }
+
+    void Defeat()
+    {
+        GameObject obj = Instantiate(starPrefab,
+                transform.position, Quaternion.identity
+                );
+        Destroy(gameObject);
     }
 }

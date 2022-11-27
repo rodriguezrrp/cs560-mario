@@ -1972,8 +1972,9 @@ GameObject:
   - component: {fileID: 1990968736}
   - component: {fileID: 1990968735}
   - component: {fileID: 1990968734}
+  - component: {fileID: 1990968739}
   m_Layer: 0
-  m_Name: Capsule (1)
+  m_Name: DummyCollCapsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2029,7 +2030,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 53bd8f1a7b2ee08429c92301bdba6e4d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2074,6 +2075,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1990968739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1990968733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d679a7ea211d8e48895b981eb33c0f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2100600607
 GameObject:
   m_ObjectHideFlags: 0
@@ -2484,7 +2497,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8397350021182516060, guid: 7c3d5b74a7961754bb4448378f4b47ad, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 106.73
+      value: 95.66
       objectReference: {fileID: 0}
     - target: {fileID: 8397350021182516060, guid: 7c3d5b74a7961754bb4448378f4b47ad, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2492,7 +2505,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8397350021182516060, guid: 7c3d5b74a7961754bb4448378f4b47ad, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 196.31
+      value: 174.42
       objectReference: {fileID: 0}
     - target: {fileID: 8397350021182516060, guid: 7c3d5b74a7961754bb4448378f4b47ad, type: 3}
       propertyPath: m_LocalRotation.w

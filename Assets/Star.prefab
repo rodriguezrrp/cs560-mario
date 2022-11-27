@@ -110,9 +110,10 @@ GameObject:
   - component: {fileID: 1230256814999797427}
   - component: {fileID: 3960413704469613177}
   - component: {fileID: 4945864950254299544}
+  - component: {fileID: 8747726318239415117}
   m_Layer: 0
   m_Name: Star
-  m_TagString: Untagged
+  m_TagString: Star
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -196,6 +197,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76f078de27ee10845a37f47e53915c04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  alwaysFaceTowards: {fileID: 0}
+--- !u!135 &8747726318239415117
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3312058016352676780}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6244602074907169001
 GameObject:
   m_ObjectHideFlags: 0
