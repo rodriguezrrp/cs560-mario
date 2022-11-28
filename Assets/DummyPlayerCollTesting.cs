@@ -23,5 +23,10 @@ public class DummyPlayerCollTesting : MonoBehaviour
             IEnemyComponent enemyComp = collision.gameObject.GetComponentInParent<IEnemyComponent>();
             enemyComp.OnWeakAreaHit();
         }
+        else if (collision.gameObject.CompareTag("chomp_log"))
+        {
+            GateDestroyer enemyComp = collision.gameObject.GetComponentInParent<GateDestroyer>();
+            enemyComp.OnHeadTriggerHit();
+        }
     }
 }

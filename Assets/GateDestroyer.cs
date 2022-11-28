@@ -11,12 +11,15 @@ public class GateDestroyer : MonoBehaviour
 
     public float initialHeight = 1.5f;
     private float initialY;
+    private float retractStartY;
+    private float deltaY;
     private bool retracting = false;
 
     // Start is called before the first frame update
     void Start()
     {
         initialY = this.transform.position.y;
+        deltaY = initialHeight / hitsRequired;
     }
 
     // Update is called once per frame
@@ -26,29 +29,41 @@ public class GateDestroyer : MonoBehaviour
         {
             // handle retraction progress
             // ultimately, after all retractions, the Y position will be moved down by amount initialHeight
-            float targetY = initialY - initialHeight * ((hitsTaken + 1) / hitsRequired);
+            //float targetY = initialY - initialHeight * ((hitsTaken + 1) / hitsRequired);
+            //float deltaY = retractStartY - targetY;
+            float targetY = retractStartY - deltaY;
             // lerp Y position downwards
-            this.transform.Translate(0, targetY * Time.deltaTime, 0);
+            this.transform.Translate(0, - deltaY * Time.deltaTime, 0);
+            Debug.Log("hitsTaken+1: " + (hitsTaken+1) + "  translate y: " + this.transform.position.y + " targetY: " + targetY + "  deltaY: " + deltaY);
 
             // if just finished retracting
             if (this.transform.position.y <= targetY)
             {
+                // snap y to the targetY
                 this.transform.position = new Vector3(this.transform.position.x, targetY, this.transform.position.z);
+                // reset retraction state
                 retracting = false;
                 hitsTaken++;
+                Debug.Log("finished retracting");
                 // if last hit:
                 // destroy this and gate
                 if (hitsTaken >= hitsRequired)
-                {
-                    Destroy(gateObjToDestroy);
-                    Destroy(this.gameObject);
-                }
+                    PerformDestruction();
             }
         }
     }
 
-    void TriggerHit()
+    void PerformDestruction()
     {
+        // destroy this and gate
+        Destroy(gateObjToDestroy);
+        Destroy(this.gameObject);
+    }
+
+    public void OnHeadTriggerHit()
+    {
+        if(!retracting)
+            retractStartY = this.transform.position.y;
         retracting = true;
     }
 }
