@@ -18,11 +18,10 @@ public class DummyPlayerCollTesting : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("player dummy coll");
-        Debug.Log(collision.gameObject);
+        Debug.Log("player dummy coll -- " + collision.gameObject);
         if (collision.gameObject.CompareTag("WeakArea"))
         {
-            Debug.Log("player dummy coll testing: hit a weak area");
+            Debug.Log("player dummy coll testing: hit a weak area!");
             IEnemyComponent enemyComp = collision.gameObject.GetComponentInParent<IEnemyComponent>();
             enemyComp.OnWeakAreaHit();
         }
