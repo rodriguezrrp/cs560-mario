@@ -5,6 +5,7 @@ using UnityEngine;
 public class StarFacingBehavior : MonoBehaviour
 {
     public GameObject alwaysFaceTowards;
+    public string starName;
 
     // Update is called once per frame
     void Update()

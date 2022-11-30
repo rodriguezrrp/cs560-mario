@@ -110,6 +110,8 @@ public class EnemyBobomb : MonoBehaviour, IEnemyComponent
         GameObject obj = Instantiate(starPrefab,
                 transform.position, Quaternion.identity
                 );
+        StarFacingBehavior starComp = obj.GetComponent<StarFacingBehavior>();
+        starComp.starName = "Big Bob-omb on the Summit";
         Destroy(gameObject);
     }
 }
