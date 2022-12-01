@@ -48,6 +48,19 @@ public class PlayerMovement : MonoBehaviour
             Destroy(collision.transform.parent.gameObject);
             Jump();
         }
+        // from DummyPlayerCollTesting - extra collision handling
+        if (collision.gameObject.CompareTag("WeakArea"))
+        {
+            IEnemyComponent enemyComp = collision.gameObject.GetComponentInParent<IEnemyComponent>();
+            enemyComp.OnWeakAreaHit();
+            //if(enemyComp.shouldCausePlayerJump) Jump();
+        }
+        else if (collision.gameObject.CompareTag("chomp_log"))
+        {
+            GateDestroyer enemyComp = collision.gameObject.GetComponentInParent<GateDestroyer>();
+            enemyComp.OnHeadTriggerHit();
+            Jump();
+        }
     }
 
     bool IsGrounded()

@@ -7,16 +7,12 @@ public class DummyRespawnTest : MonoBehaviour
 
     public GameObject respawnObj;
 
-    /*// Start is called before the first frame update
-    void Start()
-    {
-        
-    }*/
-
     // Update is called once per frame
 //    void Update()
     void FixedUpdate()
     {
+        if (respawnObj == null)
+            return;
         Rigidbody rb = GetComponent<Rigidbody>();
         Vector3 vel = rb.velocity;
         if(vel.magnitude < 0.02)

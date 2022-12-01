@@ -6,11 +6,17 @@ public class StarFacingBehavior : MonoBehaviour
 {
     public GameObject alwaysFaceTowards;
     public string starName;
+    [SerializeField] float speedX;
+    [SerializeField] float speedY = 0.5f;
+    [SerializeField] float speedZ;
 
-    // Update is called once per frame
     void Update()
     {
-        if(alwaysFaceTowards != null)
+        if(alwaysFaceTowards == null)
+        {  // just rotate
+            transform.Rotate(360 * speedX * Time.deltaTime, 360 * speedY * Time.deltaTime, 360 * speedZ * Time.deltaTime);
+        }
+        else
         {
             Quaternion lookAtTarget = Quaternion.LookRotation(alwaysFaceTowards.transform.position - this.transform.position);
             this.transform.rotation = lookAtTarget;
